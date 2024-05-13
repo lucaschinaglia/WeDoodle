@@ -17,4 +17,8 @@ struct DrawingViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: DrawingViewController, context: Context) {
         // Update the view controller if needed
     }
+    
+    func loadDrawing(doodle: Doodle) {
+        // This function should call a method on your actual DoodleView instance to load the drawing.
+    }
 }

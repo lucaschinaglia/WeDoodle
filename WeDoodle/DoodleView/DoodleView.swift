@@ -6,12 +6,16 @@
 //
 
 import Foundation
-
 import UIKit
-
 import Combine
 
 class DoodleView: UIView {
+    
+    var image: UIImage? {
+        didSet {
+            // Code to handle the new image and redraw the view
+        }
+    }
     
     var viewModel: DoodleViewModel?
     
@@ -72,7 +76,7 @@ class DoodleView: UIView {
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
-
+        
         for (path, color, width) in paths {
             context.saveGState()
             context.setBlendMode(.normal)
@@ -82,7 +86,7 @@ class DoodleView: UIView {
             path.stroke()
             context.restoreGState()
         }
-
+        
         // Do the same for the current path if it exists
         if let currentPath = currentPath {
             context.saveGState()
@@ -100,36 +104,59 @@ class DoodleView: UIView {
         paths.removeAll()
         setNeedsDisplay()
     }
-}
-
-
-// MARK: - DoodleView Extension for Dotted Background
-extension DoodleView {
-    func setDottedBackground() {
-        // Increase the tile size for more spacing between dots
-        let tileSize = CGSize(width: 40, height: 40)
-        // Make the dot radius smaller
-        let dotRadius: CGFloat = 1
-        // Adjust the pattern offset if needed, or calculate it based on the tile size
-        let patternOffset: CGFloat = tileSize.width / 4
-
-        UIGraphicsBeginImageContextWithOptions(tileSize, false, 0)
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-
-        // Use a lighter color for the dots
-        UIColor(white: 0.85, alpha: 1).setFill()  // Adjust the white value as needed
-
-        for x in stride(from: patternOffset, through: tileSize.width - patternOffset, by: tileSize.width / 2) {
-            for y in stride(from: patternOffset, through: tileSize.height - patternOffset, by: tileSize.height / 2) {
-                context.fillEllipse(in: CGRect(x: x - dotRadius, y: y - dotRadius, width: dotRadius * 2, height: dotRadius * 2))
-            }
-        }
-
-        let tileImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        if let tileImage = tileImage {
-            backgroundColor = UIColor(patternImage: tileImage)
+    
+    func createThumbnail() -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { ctx in
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
         }
     }
+    
+    func loadDrawing(data: Data) {
+        guard let image = UIImage(data: data) else { return }
+        let imageView = UIImageView(image: image)
+        imageView.frame = self.bounds
+        self.addSubview(imageView)
+        self.sendSubviewToBack(imageView)
+    }
+    
+    func getImageData() -> Data? {
+        UIGraphicsBeginImageContext(self.bounds.size)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        self.layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image?.pngData()
+    }
 }
+    
+    // MARK: - DoodleView Extension for Dotted Background
+    extension DoodleView {
+        func setDottedBackground() {
+            // Increase the tile size for more spacing between dots
+            let tileSize = CGSize(width: 40, height: 40)
+            // Make the dot radius smaller
+            let dotRadius: CGFloat = 1
+            // Adjust the pattern offset if needed, or calculate it based on the tile size
+            let patternOffset: CGFloat = tileSize.width / 4
+            
+            UIGraphicsBeginImageContextWithOptions(tileSize, false, 0)
+            guard let context = UIGraphicsGetCurrentContext() else { return }
+            
+            // Use a lighter color for the dots
+            UIColor(white: 0.85, alpha: 1).setFill()  // Adjust the white value as needed
+            
+            for x in stride(from: patternOffset, through: tileSize.width - patternOffset, by: tileSize.width / 2) {
+                for y in stride(from: patternOffset, through: tileSize.height - patternOffset, by: tileSize.height / 2) {
+                    context.fillEllipse(in: CGRect(x: x - dotRadius, y: y - dotRadius, width: dotRadius * 2, height: dotRadius * 2))
+                }
+            }
+            
+            let tileImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            if let tileImage = tileImage {
+                backgroundColor = UIColor(patternImage: tileImage)
+            }
+        }
+    }

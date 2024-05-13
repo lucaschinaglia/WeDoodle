@@ -11,7 +11,7 @@ import SwiftUI
 struct WeDoodleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DoodleHomeView()
         }
     }
 }

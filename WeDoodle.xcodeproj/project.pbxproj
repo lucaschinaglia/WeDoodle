@@ -14,6 +14,14 @@
 		350C50EE2BDC626D00DEFED9 /* WeDoodleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C50ED2BDC626D00DEFED9 /* WeDoodleTests.swift */; };
 		350C50F82BDC626D00DEFED9 /* WeDoodleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C50F72BDC626D00DEFED9 /* WeDoodleUITests.swift */; };
 		350C50FA2BDC626D00DEFED9 /* WeDoodleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C50F92BDC626D00DEFED9 /* WeDoodleUITestsLaunchTests.swift */; };
+		350C51072BDC628A00DEFED9 /* DoodleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350C51062BDC628A00DEFED9 /* DoodleView.swift */; };
+		35BE21982BDC68F600440672 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE21972BDC68F600440672 /* DrawingViewController.swift */; };
+		35BE219A2BDC69A500440672 /* DoodleViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE21992BDC69A500440672 /* DoodleViewRepresentable.swift */; };
+		35BE219C2BDC69B000440672 /* DrawingViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE219B2BDC69B000440672 /* DrawingViewControllerRepresentable.swift */; };
+		35BE219E2BDD3B1200440672 /* DoodleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE219D2BDD3B1200440672 /* DoodleViewModel.swift */; };
+		35BE21A22BE0424F00440672 /* DoodleHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE21A12BE0424F00440672 /* DoodleHomeView.swift */; };
+		35BE21A72BE042FB00440672 /* DoodleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE21A62BE042FB00440672 /* DoodleStorage.swift */; };
+		35BE21A92BE0450100440672 /* DoodleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BE21A82BE0450100440672 /* DoodleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,14 @@
 		350C50F32BDC626D00DEFED9 /* WeDoodleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeDoodleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		350C50F72BDC626D00DEFED9 /* WeDoodleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeDoodleUITests.swift; sourceTree = "<group>"; };
 		350C50F92BDC626D00DEFED9 /* WeDoodleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeDoodleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		350C51062BDC628A00DEFED9 /* DoodleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleView.swift; sourceTree = "<group>"; };
+		35BE21972BDC68F600440672 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
+		35BE21992BDC69A500440672 /* DoodleViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewRepresentable.swift; sourceTree = "<group>"; };
+		35BE219B2BDC69B000440672 /* DrawingViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		35BE219D2BDD3B1200440672 /* DoodleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewModel.swift; sourceTree = "<group>"; };
+		35BE21A12BE0424F00440672 /* DoodleHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleHomeView.swift; sourceTree = "<group>"; };
+		35BE21A62BE042FB00440672 /* DoodleStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleStorage.swift; sourceTree = "<group>"; };
+		35BE21A82BE0450100440672 /* DoodleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +110,11 @@
 		350C50DB2BDC626B00DEFED9 /* WeDoodle */ = {
 			isa = PBXGroup;
 			children = (
-				350C50DC2BDC626B00DEFED9 /* WeDoodleApp.swift */,
+				35BE21A52BE042EB00440672 /* Helpers */,
+				35BE21A02BE0423A00440672 /* DoodleHome */,
+				35BE219F2BE0420100440672 /* DoodleView */,
 				350C50DE2BDC626B00DEFED9 /* ContentView.swift */,
+				350C50DC2BDC626B00DEFED9 /* WeDoodleApp.swift */,
 				350C50E02BDC626D00DEFED9 /* Assets.xcassets */,
 				350C50E22BDC626D00DEFED9 /* Preview Content */,
 			);
@@ -125,6 +144,35 @@
 				350C50F92BDC626D00DEFED9 /* WeDoodleUITestsLaunchTests.swift */,
 			);
 			path = WeDoodleUITests;
+			sourceTree = "<group>";
+		};
+		35BE219F2BE0420100440672 /* DoodleView */ = {
+			isa = PBXGroup;
+			children = (
+				350C51062BDC628A00DEFED9 /* DoodleView.swift */,
+				35BE219D2BDD3B1200440672 /* DoodleViewModel.swift */,
+				35BE21992BDC69A500440672 /* DoodleViewRepresentable.swift */,
+				35BE219B2BDC69B000440672 /* DrawingViewControllerRepresentable.swift */,
+				35BE21972BDC68F600440672 /* DrawingViewController.swift */,
+			);
+			path = DoodleView;
+			sourceTree = "<group>";
+		};
+		35BE21A02BE0423A00440672 /* DoodleHome */ = {
+			isa = PBXGroup;
+			children = (
+				35BE21A12BE0424F00440672 /* DoodleHomeView.swift */,
+			);
+			path = DoodleHome;
+			sourceTree = "<group>";
+		};
+		35BE21A52BE042EB00440672 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				35BE21A82BE0450100440672 /* DoodleModel.swift */,
+				35BE21A62BE042FB00440672 /* DoodleStorage.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +305,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35BE21A92BE0450100440672 /* DoodleModel.swift in Sources */,
 				350C50DF2BDC626B00DEFED9 /* ContentView.swift in Sources */,
+				35BE219A2BDC69A500440672 /* DoodleViewRepresentable.swift in Sources */,
+				35BE21A72BE042FB00440672 /* DoodleStorage.swift in Sources */,
+				35BE21A22BE0424F00440672 /* DoodleHomeView.swift in Sources */,
+				35BE21982BDC68F600440672 /* DrawingViewController.swift in Sources */,
+				350C51072BDC628A00DEFED9 /* DoodleView.swift in Sources */,
+				35BE219C2BDC69B000440672 /* DrawingViewControllerRepresentable.swift in Sources */,
 				350C50DD2BDC626B00DEFED9 /* WeDoodleApp.swift in Sources */,
+				35BE219E2BDD3B1200440672 /* DoodleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeDoodle/Preview Content\"";
+				DEVELOPMENT_TEAM = L49ULT5KS9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -450,6 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeDoodle/Preview Content\"";
+				DEVELOPMENT_TEAM = L49ULT5KS9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
